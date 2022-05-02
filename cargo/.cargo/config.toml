@@ -32,3 +32,11 @@ build-std = ["std", "panic_abort"]{% else %}build-std = ["core", "alloc", "panic
 {% if espidfver != "v4.4" %}#{% endif %}ESP_IDF_VERSION = { value = "branch:release/v4.4" }
 # Enables the esp-idf-sys "native" build feature (`cargo build --features native`) to build against ESP-IDF master (mainline)
 {% if espidfver != "mainline" %}#{% endif %}ESP_IDF_VERSION = { value = "master" }
+
+# use globaly installed esp_idf instead of downloading new for each project
+# defaults to ~/.espressif
+# comment out this line to use local esp-idf
+ESP_IDF_TOOLS_INSTALL_DIR = "global"
+# needed for non risk5 builds
+PIP_USER = "no"
+LIBCLANG_PATH = "/home/jakob/.espressif/tools/xtensa-esp32-elf-clang/esp-13.0.0-20211203-x86_64-unknown-linux-gnu/lib"
